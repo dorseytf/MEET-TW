@@ -2,6 +2,7 @@
 title: "Determining SFC Model Structure Based on Lit Review"
 author: "Travis Dorsey"
 date: "`r Sys.Date()`"
+bibliography: "`r rbbt::bbt_write_bib('bibliography.json', overwrite = TRUE)`" 
 output: html_document
 editor_options: 
   markdown: 
@@ -234,17 +235,19 @@ In addition to the adjustments made to these three tables, the authors also note
 
 Since a key concern of MEET-TW is determining which transition policies/pathways are feasible, the question of financial sustainability will undoubtedly arise. By disaggregating the Central Bank from the Government sector, the model would be able to elucidate how government funding and monetary policy operate in Taiwan, thus allay concerns about the financial sustainability of any proposed transition pathway. 
 
-As George, et al. (2025) note, this will require additional complexity, such as adding additional rows to each matrix for loans and government bonds. As noted in Zezza and Zezza (2019), this is far more common in theoretical SFC models, but if a model wishes to explore monetary policy such as QE, then it should explicitly incorporate the central bank. 
+As George, et al. (2025) note, this will require additional complexity, such as adding additional rows to each matrix for loans and government bonds [@georgeDerivingAccountingStructure2025]. As noted in Zezza and Zezza (2019), this is far more common in theoretical SFC models, but if a model wishes to explore monetary policy such as QE, then it should explicitly incorporate the central bank.[@zezzaDesignEmpiricalStockFlowConsistent2019] 
 
 ### Separating banks and non-banks
 
-In countries with high degrees of financialization, banks (monetary financial institutions) are primarily involved in interest-bearing assets, while non-banks (non-monetary financial institutions) are mostly involved in equity, pension, and insurance. Given Taiwan's level of development, it is likely that separating FCs in this way would be worhtwhile
+In countries with high degrees of financialization, banks (monetary financial institutions) are primarily involved in interest-bearing assets, while non-banks (non-monetary financial institutions) are mostly involved in equity, pension, and insurance.[@georgeDerivingAccountingStructure2025;@zezzaDesignEmpiricalStockFlowConsistent2019] Given Taiwan's level of development, it is likely that separating FCs in this way would be worthwhile.
 
 ### Disaggregating Interest-Bearing Assets
 
-While George, et al. (2025) aggregate currency and deposits, loans, and debt securities into one asset class (interest-bearing assets), most other empirical SFC models disaggregate these. In the case of Taiwan, it might be better to follow the latter approach, as it is possible that many loans in the household sector are actually related to small, family-run businesses. Treating government bonds explicitly would also help in the elucidation of government funding and monetary policy. 
+While George, et al. (2025) aggregate currency and deposits, loans, and debt securities into one asset class (interest-bearing assets), most other empirical SFC models disaggregate these.[@thomsenBenchmarkEcologicalStockFlowConsistent2025] In the case of Taiwan, it might be better to follow the latter approach, as it is possible that many loans in the household sector are actually related to small, family-run businesses. Treating government bonds explicitly would also help in the elucidation of government funding and monetary policy. 
 
 ### Disaggregating Insurance and Pensions
 
 Given the prevalence of insurance and recent political volatility surrounding public pensions in Taiwan, it would be a specific characteristic of any SFC model of Taiwan to split these two asset types. This would allow testing of specific policy proposals for pension reform.
+
+# References
 
