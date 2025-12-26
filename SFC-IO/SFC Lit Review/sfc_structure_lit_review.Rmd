@@ -1,0 +1,253 @@
+---
+title: "Determining SFC Model Structure Based on Lit Review"
+author: "Travis Dorsey"
+date: "`r Sys.Date()`"
+bibliography: "`r rbbt::bbt_write_bib('bibliography.json', overwrite = TRUE)`" 
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, error = FALSE)
+
+library(knitr)
+library(tidyverse)
+library(kableExtra)
+
+### Define Structure
+
+# Sectors 
+sectors_basic <- c("Households", "NFCs", "FCs", "Government", "RoW", "Total")
+sectors_prod_basic <- c("Production", sectors_basic)
+
+sectors_adv <- c("Households", "NFCs", "MFIs", "NMFIs", "Central Bank", "Government", "RoW", "Total")
+sectors_prod_adv <- c("Production", sectors_adv)
+
+# Transaction Flows
+transflows_basic <- c("Consumption", "Gross capital formation", "Exports", "Imports", "Taxes-subsidies",
+                      "Wages", "GOS & mixed income")
+
+transflows_adv <- c("Consumption", "Government wages (to Production)", "Other government consumption", 
+                    "Gross capital formation", "Exports", "Imports", "Taxes-subsidies",             
+                    "Private Wages", "Government wages (to Households)", "GOS & mixed income")
+
+transflows_totals <- c("Total: net lending (1)", "Residual transaction (2)", 
+                       "Actual net lending (3) = (1) + (2)")
+
+transflows_propinc <- c("Interest paid by FCs", "Interest paid to FCs", "Dividends")
+
+transflows_secondinc <- c("Income taxes", "Social contributions", "Social benefits")
+
+transflows_other <- c("Other Investment Income", "Household's social contributions supplements",
+                      "Pension adjustment")
+
+# Balance Sheet
+assets_hilevel <- c("Monetary gold and special drawing rights", "Currency and deposits",
+                    "Debt securities", "Loans", "Equity and investment fund shares/units",
+                    "Insurance, pensions, and standardized guarantee schemes",
+                    "Financial derivatives and employee stock options", "Other accounts receivable")
+
+assets_agg <- c("Interest-bearing financial stocks (F.2 + F.3 + F.4)",
+                "Equity (F.5)",
+                "Insurance and Pensions (F.6)",
+                "Other Financial Stocks (F.1 + F.7 + F.8)")
+
+assets_capstock <- c("Housing capital stock", "NFCs capital stock", "Government capital stock")
+
+assets_totalreal <- c("Total: real assets")
+
+assets_int <- c("Interest-bearing assets", "Interest-bearing liabilities")
+assets_equity <- c("Equity - assets", "Equity - liabilities")
+assets_pension <- c("Pensions")
+
+assets_total <- c("Total: financial net worth (1)", "Residual financial instrument (2)",
+                  "Actual financial net worth (3) = (1) + (2)")
+
+# Stock-Flows
+stock_flow_opening_nw <- "Opening Net Worth (prior year) (1)"
+
+stock_flow_realassets <- c("Gross Capital Formation (2)",
+                           "Depreciation of real assets (3)",
+                           "Other changes in real assets (4)")
+
+stock_flow_total_ra <- "Changes in Real Assets (5) = (2)-(3)+(4)"
+
+stock_flow_changes_net_fa <- c(assets_int, assets_equity, assets_pension, "Residual FI")
+title_stock_flow_changes_net_fa <- "Changes in net financial\n assets arising from\n financial transactions"
+
+stock_flow_actual_nl <- "Actual net lending (6)"
+
+stock_flow_changes_other <- stock_flow_changes_net_fa
+title_stock_flow_changes_other <- "Other changes in\n net financial assets"
+
+stock_flow_total_other_changes <- "Total other changes in net financial assets (7)"
+
+stock_flow_total_change_netfa <- "Change in Net Financial Assets (8) = (6) + (7)"
+stock_flow_closing_nw <- "Closing Net Worth (current year) (9) = (1) + (5) + (8)"
+
+```
+
+# SFC Literature Review Highlights
+
+Development of the empirical SFC model based on the process laid out in:
+
+-   George, Pratas, and Dafermos (2025): Deriving the accounting
+    structure of country-specific SFC models: a step-by-step approach
+
+## Initial Model Structure
+
+### Transactions Flow Matrix
+
+Starting from the national accounts, George, et al. (2025) make the
+following adjustments:  
+
+- Separate production into its own sector (prevents over complication of the model)  
+- Remove insignificant flows (those \< 1% of GDP)  
+- Include property income flows (e.g., interest, dividends, etc.)  
+- Include secondary income flows (e.g., income tax, social contributions and benefits, etc.)  
+- Include capital account flows (e.g., pension adjustments, capital taxes, etc.)  
+- Remove adjustments related to FISIM (based on discredited Loanable Funds Theory)  
+- Breakdown Government consumption (i.e., treat govt wages and procurement separately from services provided like public education)  
+- Remove imputed rents (not actual monetary flows)  
+- Address statistical discrepancy between financial and non-financial accounts  
+
+After these adjustments, the authors arrive at the following structure
+for the transaction flow matrix:
+
+```{r paper_tfm}
+paper_tfm <- tibble(Flows = c(transflows_adv, transflows_propinc, transflows_secondinc, transflows_other,
+                              transflows_totals))
+
+tfm_other_break <- nrow(paper_tfm)-length(transflows_totals) - length(transflows_other)
+tfm_total_break <- nrow(paper_tfm)-length(transflows_totals)
+
+paper_tfm %>%
+  kbl() %>%
+  kable_classic("hover", full_width = F) %>%
+  row_spec(tfm_other_break, extra_css = "border-bottom: 1px dashed") %>%
+  row_spec(tfm_total_break, extra_css = "border-bottom: 1px solid") %>%
+  row_spec(0, bold = T)
+```
+
+### Balance Sheet Matrix
+
+George, et al. (2025) identify the following table of High Level
+Financial Stocks in National Accounts required to develop the balance
+sheet matrix.
+
+```{r highlevel_assets}
+highlevel_assets_tbl <- tibble(Description = assets_hilevel) %>%
+  mutate(Code = paste0("F.", row_number())) %>%
+  select(Code, Description)
+
+highlevel_assets_tbl %>%
+  kbl() %>%
+  kable_classic("hover", full_width = F) %>%
+  column_spec (1, border_right = T) %>%
+  row_spec(0, bold = T)
+```
+
+In order to establish a direct correspondence with the interest flows in
+the transaction flow matrix, the authors define an aggregated set of
+financial stocks:
+
+```{r agg_assets}
+tibble(Description = assets_agg) %>%
+  kbl() %>%
+  kable_classic("hover", full_width = F) %>%
+  row_spec(0, bold = T)
+```
+
+Which, after including capital stocks from the Household, Government,
+and NFC sectors, results in a final balance sheet matrix with the
+following structure:
+
+```{r final_balance_sheet}
+final_balance_sheet_tbl <- tibble(`Financial Stock` = c(assets_capstock, assets_totalreal, assets_int, assets_equity, 
+                                                        assets_pension, assets_total))
+
+bs_breaks <- tibble(section_len = c(length(assets_capstock), length(assets_totalreal), length(assets_int), length(assets_equity),
+                                    length(assets_pension), length(assets_total))) %>%
+  mutate(breaks = cumsum(section_len))
+
+final_balance_sheet_tbl %>%
+  kbl() %>%
+  kable_classic("hover", full_width = F) %>%
+  row_spec(bs_breaks$breaks, extra_css = "border-bottom: 1px solid") %>%
+  row_spec(0, bold = T)
+
+```
+
+Given the prevalence of insurance in Taiwan as a financial instrument,
+including this as a balance sheet item with pensions makes sense.
+
+
+### Stock-Flow Matrix
+
+Depicts the change in net worth of each sector and links the Transaction Flow Matrix with the Balance Sheet Matrix.
+
+```{r sfm}
+sfm_top <- tibble(stock_flows = c(stock_flow_opening_nw, stock_flow_realassets, stock_flow_total_ra))
+
+sfm_changes_fin_trans <- tibble(stock_flows = stock_flow_changes_net_fa)
+
+sfm_mid <- tibble(stock_flows = stock_flow_actual_nl)
+
+sfm_changes_other <- tibble(stock_flows = stock_flow_changes_other)
+
+sfm_bot <- tibble(stock_flows = c(stock_flow_total_other_changes, stock_flow_total_change_netfa, stock_flow_closing_nw))
+
+
+sfm_tbl <- bind_rows(sfm_top, sfm_changes_fin_trans, sfm_mid, sfm_changes_other, sfm_bot) 
+
+sfm_breaks <- tibble(section_len = c(length(stock_flow_opening_nw), length(stock_flow_realassets), length(stock_flow_total_ra),
+                                     length(stock_flow_changes_net_fa), length(stock_flow_actual_nl), length(stock_flow_changes_other),
+                                     length(stock_flow_total_other_changes), length(stock_flow_total_change_netfa), 
+                                     length(stock_flow_closing_nw))) %>%
+  mutate(breaks = cumsum(section_len))
+
+pack1 <- tibble(startrow = nrow(sfm_top)+1,
+                endrow = nrow(sfm_top)+nrow(sfm_changes_fin_trans))
+
+pack2 <- tibble(startrow = pack1$endrow + nrow(sfm_mid) + 1,
+                endrow = pack1$endrow + nrow(sfm_mid) + nrow(sfm_changes_other))
+
+sfm_tbl %>%
+  kbl(col.names = "Real and Financial Asset Stock Flows") %>%
+  kable_classic("hover", full_width = F) %>%
+  row_spec(c(0, 1, nrow(sfm_top), nrow(sfm_tbl)-1, nrow(sfm_tbl)), bold = T) %>%
+  pack_rows(title_stock_flow_changes_net_fa, bold = F, start_row = pack1$startrow, end_row = pack1$endrow) %>%
+  pack_rows(title_stock_flow_changes_net_fa, bold = F, start_row = pack2$startrow, end_row = pack2$endrow) %>%
+  row_spec(sfm_breaks$breaks, extra_css = "border-bottom: 1px solid")
+```
+
+
+## Possible Model Adjustments
+
+In addition to the adjustments made to these three tables, the authors also note several other modeling choices that can be made depending on the research question at hand. Given the purpose of the SFC model within MEET-TW, we will address the following two structural adjustments:  
+
+- Separate the Central Bank  
+- Separate banks and non-banks
+
+### Separating the Central Bank
+
+Since a key concern of MEET-TW is determining which transition policies/pathways are feasible, the question of financial sustainability will undoubtedly arise. By disaggregating the Central Bank from the Government sector, the model would be able to elucidate how government funding and monetary policy operate in Taiwan, thus allay concerns about the financial sustainability of any proposed transition pathway. 
+
+As George, et al. (2025) note, this will require additional complexity, such as adding additional rows to each matrix for loans and government bonds [@georgeDerivingAccountingStructure2025]. As noted in Zezza and Zezza (2019), this is far more common in theoretical SFC models, but if a model wishes to explore monetary policy such as QE, then it should explicitly incorporate the central bank.[@zezzaDesignEmpiricalStockFlowConsistent2019] 
+
+### Separating banks and non-banks
+
+In countries with high degrees of financialization, banks (monetary financial institutions) are primarily involved in interest-bearing assets, while non-banks (non-monetary financial institutions) are mostly involved in equity, pension, and insurance.[@georgeDerivingAccountingStructure2025;@zezzaDesignEmpiricalStockFlowConsistent2019] Given Taiwan's level of development, it is likely that separating FCs in this way would be worthwhile.
+
+### Disaggregating Interest-Bearing Assets
+
+While George, et al. (2025) aggregate currency and deposits, loans, and debt securities into one asset class (interest-bearing assets), most other empirical SFC models disaggregate these.[@thomsenBenchmarkEcologicalStockFlowConsistent2025] In the case of Taiwan, it might be better to follow the latter approach, as it is possible that many loans in the household sector are actually related to small, family-run businesses. Treating government bonds explicitly would also help in the elucidation of government funding and monetary policy. 
+
+### Disaggregating Insurance and Pensions
+
+Given the prevalence of insurance and recent political volatility surrounding public pensions in Taiwan, it would be a specific characteristic of any SFC model of Taiwan to split these two asset types. This would allow testing of specific policy proposals for pension reform.
+
+# References
+
