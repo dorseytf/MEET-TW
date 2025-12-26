@@ -35,7 +35,7 @@ transflows_adv <- c("Consumption", "Government wages (to Production)", "Other go
 transflows_totals <- c("Total: net lending (1)", "Residual transaction (2)", 
                        "Actual net lending (3) = (1) + (2)")
 
-transflows_propinc <- c("Interest", "Interest paid by FCs", "Interest paid to FCs", "Dividends")
+transflows_propinc <- c("Interest paid by FCs", "Interest paid to FCs", "Dividends")
 
 transflows_secondinc <- c("Income taxes", "Social contributions", "Social benefits")
 
@@ -95,7 +95,7 @@ Development of the empirical SFC model based on the process laid out in:
 -   George, Pratas, and Dafermos (2025): Deriving the accounting
     structure of country-specific SFC models: a step-by-step approach
 
-## Key Features
+## Initial Model Structure
 
 ### Transactions Flow Matrix
 
@@ -117,7 +117,7 @@ for the transaction flow matrix:
 
 ```{r paper_tfm}
 paper_tfm <- tibble(Flows = c(transflows_adv, transflows_propinc, transflows_secondinc, transflows_other,
-               transflows_totals))
+                              transflows_totals))
 
 tfm_other_break <- nrow(paper_tfm)-length(transflows_totals) - length(transflows_other)
 tfm_total_break <- nrow(paper_tfm)-length(transflows_totals)
@@ -223,4 +223,28 @@ sfm_tbl %>%
 ```
 
 
+## Possible Model Adjustments
+
+In addition to the adjustments made to these three tables, the authors also note several other modeling choices that can be made depending on the research question at hand. Given the purpose of the SFC model within MEET-TW, we will address the following two structural adjustments:  
+
+- Separate the Central Bank  
+- Separate banks and non-banks
+
+### Separating the Central Bank
+
+Since a key concern of MEET-TW is determining which transition policies/pathways are feasible, the question of financial sustainability will undoubtedly arise. By disaggregating the Central Bank from the Government sector, the model would be able to elucidate how government funding and monetary policy operate in Taiwan, thus allay concerns about the financial sustainability of any proposed transition pathway. 
+
+As George, et al. (2025) note, this will require additional complexity, such as adding additional rows to each matrix for loans and government bonds. As noted in Zezza and Zezza (2019), this is far more common in theoretical SFC models, but if a model wishes to explore monetary policy such as QE, then it should explicitly incorporate the central bank. 
+
+### Separating banks and non-banks
+
+In countries with high degrees of financialization, banks (monetary financial institutions) are primarily involved in interest-bearing assets, while non-banks (non-monetary financial institutions) are mostly involved in equity, pension, and insurance. Given Taiwan's level of development, it is likely that separating FCs in this way would be worhtwhile
+
+### Disaggregating Interest-Bearing Assets
+
+While George, et al. (2025) aggregate currency and deposits, loans, and debt securities into one asset class (interest-bearing assets), most other empirical SFC models disaggregate these. In the case of Taiwan, it might be better to follow the latter approach, as it is possible that many loans in the household sector are actually related to small, family-run businesses. Treating government bonds explicitly would also help in the elucidation of government funding and monetary policy. 
+
+### Disaggregating Insurance and Pensions
+
+Given the prevalence of insurance and recent political volatility surrounding public pensions in Taiwan, it would be a specific characteristic of any SFC model of Taiwan to split these two asset types. This would allow testing of specific policy proposals for pension reform.
 
