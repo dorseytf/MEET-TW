@@ -1,0 +1,201 @@
+Category,Data Element,Period ,Item Code 
+NTD-USD Exchange Rates ,NTD-USD Exchange Rates ,Yearly,BP01Y01en 
+,NTD-USD Exchange Rates ,Monthly,BP01M01en 
+,NTD-USD Exchange Rates ,Daily,BP01D01en 
+Key Financial Indicators ,Money ,Yearly,EF01Y01en 
+,Money ,Monthly,EF01M01en 
+,Deposits ,Yearly,EF03Y01en 
+,Deposits ,Monthly,EF03M01en 
+,Loans & Investments (measured at original costs) ,Yearly,EFA4Y01en 
+,Loans & Investments (measured at original costs) ,Monthly,EFA4M01en 
+,Financial Markets ,Yearly,EF05Y01en 
+,Financial Markets ,Monthly,EF05M01en 
+,Other,Yearly,EF07Y01en 
+,Other,Monthly,EF07M01en 
+,Seasonally Adjusted Key Financial Indicators ,Monthly,EF10M01en 
+Money,Reserve Money (Avg of Daily Figures),Yearly,EF11Y01en 
+,Reserve Money (Avg of Daily Figures),Monthly,EF11M01en 
+,Reserve Money (End of Month),Yearly,EF12Y01en 
+,Reserve Money (End of Month),Monthly,EF12M01en 
+,Factors Responsible for Changes in Reserve Money ,Yearly,EF13Y01en 
+,Factors Responsible for Changes in Reserve Money ,Monthly,EF13M01en 
+,Monetary Aggregates (Avg of Daily Figures),Yearly,EF15Y01en 
+,Monetary Aggregates (Avg of Daily Figures),Monthly,EF15M01en 
+,Monetary Aggregates (End of Month),Yearly,EF17Y01en 
+,Monetary Aggregates (End of Month),Monthly,EF17M01en 
+,Factors Responsible for Changes in Monetary Aggregate M1B ,Yearly,EF19Y01en 
+,Factors Responsible for Changes in Monetary Aggregate M1B ,Monthly,EF19M01en 
+,Factors Responsible for Changes in Monetary Aggregate M2 ,Yearly,EF21Y01en 
+,Factors Responsible for Changes in Monetary Aggregate M2 ,Monthly,EF21M01en 
+,Reserve Ratios ,Daily,EF71D01en 
+,Reserve Requirements of Financial Institutions ,Yearly,EF72Y01en 
+,Reserve Requirements of Financial Institutions ,Monthly,EF72M01en 
+,Liquidity Ratio and Liquid Reserves of Other Monetary Financial Institutions ,Yearly,EF73Y01en 
+,Liquidity Ratio and Liquid Reserves of Other Monetary Financial Institutions ,Monthly,EF73M01en 
+,Liquid Liabilities ,Yearly,EFA1Y01en 
+,Liquid Liabilities ,Monthly,EFA1M01en 
+Consolidated Assets and Liabilities,Financial Institutions – Assets,Yearly,EF39Y01en
+,Financial Institutions – Assets,Monthly,EF39M01en 
+,Financial Institutions – Liabilities,Yearly,EF41Y01en 
+,Financial Institutions – Liabilities,Monthly,EF41M01en 
+,Monetary Institutions – Assets,Yearly,EF35Y01en 
+,Monetary Institutions – Assets,Monthly,EF35M01en 
+,Monetary Institutions – Liabilities,Yearly,EF37Y01en 
+,Monetary Institutions – Liabilities,Monthly,EF37M01en 
+,Central Bank – Assets,Yearly,EF23Y01en 
+,Central Bank – Assets,Monthly,EF23M01en 
+,Central Bank – Liabilities,Yearly,EF25Y01en 
+,Central Bank – Liabilities,Monthly,EF25M01en 
+,Other Monetary Financial Banks – Assets,Yearly,EF27Y01en 
+,Other Monetary Financial Banks – Assets,Monthly,EF27M01en 
+,Other Monetary Financial Banks – Liabilities,Yearly,EF29Y01en 
+,Other Monetary Financial Banks – Liabilities,Monthly,EF29M01en 
+,Domestic Banks – Assets,Yearly,EF43Y01en 
+,Domestic Banks – Assets,Monthly,EF43M01en 
+,Domestic Banks – Liabilities,Yearly,EF45Y01en 
+,Domestic Banks – Liabilities,Monthly,EF45M01en 
+,Local Branches of Foreign Banks – Assets,Yearly,EF47Y01en 
+,Local Branches of Foreign Banks – Assets,Monthly,EF47M01en 
+,Local Branches of Foreign Banks – Liabilities,Yearly,EF49Y01en 
+,Local Branches of Foreign Banks – Liabilities,Monthly,EF49M01en 
+,Credit Cooperative Associations – Assets,Yearly,EF55Y01en 
+,Credit Cooperative Associations – Assets,Monthly,EF55M01en 
+,Credit Cooperative Associations – Liabilities,Yearly,EF57Y01en 
+,Credit Cooperative Associations – Liabilities,Monthly,EF57M01en 
+,Credit Departments of Farmers' and Fishermen's Associations – Assets,Yearly,EF59Y01en 
+,Credit Departments of Farmers' and Fishermen's Associations – Assets,Monthly,EF59M01en 
+,Credit Departments of Farmers' and Fishermen's Associations – Liabilities,Yearly,EF61Y01en 
+,Credit Departments of Farmers' and Fishermen's Associations – Liabilities,Monthly,EF61M01en 
+,Chunghwa Post Co. - Assets,Yearly,EF63Y01en 
+,Chunghwa Post Co. - Assets,Monthly,EF63M01en 
+,Chunghwa Post Co. - Liabilities,Yearly,EF64Y01en 
+,Chunghwa Post Co. - Liabilities,Monthly,EF64M01en 
+,Money Market Mutual Funds – Assets & Liabilities,Yearly,EG65Y01en 
+,Money Market Mutual Funds – Assets & Liabilities,Monthly,EG65M01en 
+,Trust and Investment Companies – Assets & Liabilities,Yearly,EF65Y01en 
+,Trust and Investment Companies – Assets & Liabilities,Monthly,EF65M01en 
+,Life Insurance Companies – Assets & Liabilities,Yearly,EF67Y01en 
+,Life Insurance Companies – Assets & Liabilities,Monthly,EF67M01en 
+,Property and Casualty Insurance Companies – Assets & Liabilities,Yearly,EG05Y01en 
+,Property and Casualty Insurance Companies – Assets & Liabilities,Monthly,EG05M01en 
+,Central Deposit Insurance Corporation – Assets & Liabilities,Yearly,EG03Y01en 
+,Central Deposit Insurance Corporation – Assets & Liabilities,Monthly,EG03M01en 
+,Bills Finance Companies – Assets & Liabilities,Yearly,EG07Y01en 
+,Bills Finance Companies – Assets & Liabilities,Monthly,EG07M01en 
+,Securities Finance Companies – Assets,Yearly,EGA9Y01en 
+,Securities Finance Companies – Assets,Monthly,EGA9M01en 
+,Securities Finance Companies – Liabilities,Yearly,EGB9Y01en 
+,Securities Finance Companies – Liabilities,Monthly,EGB9M01en 
+,Offshore Banking Units - Consolidated Assets and Liabilities,Monthly,EGA7M01en 
+,Offshore Banking Units - Maturities of Major Assets and Liabilities,Quarterly,EGC7Q01en 
+Deposits with All Banks ,Deposits By Account ,Yearly,EI75Y01en 
+,Deposits By Account ,Monthly,EI75M01en 
+,Deposits by Industry,Yearly,EI77Y01en 
+,Deposits by Industry,Monthly,EI77M01en 
+,Deposits by Sector,Yearly,EI79Y01en 
+,Deposits by Sector,Monthly,EI79M01en 
+,Time Deposits-By Maturity ,Monthly,EI80M01en 
+,Time Savings Deposits-By Maturity ,Monthly,EI81M01en 
+,Time Deposits-By Depositors ,Monthly,EIA1M01en 
+,Time Savings Deposits-By Depositors ,Monthly,EI82M01en 
+,Time Deposits-By Amount ,Monthly,EI83M01en 
+,Time Savings Deposits-By Amount ,Monthly,EI84M01en 
+Loans and Discounts at All Banks ,Loans and Discounts by Account,Yearly,EI85Y01en 
+,Loans and Discounts by Account,Monthly,EI85M01en 
+,Loans and Discounts by Sector,Yearly,EI86Y01en 
+,Loans and Discounts by Sector,Monthly,EI86M01en 
+,Loans and Discounts by Industry,Yearly,EI87Y01en 
+,Loans and Discounts by Industry,Monthly,EI87M01en 
+,Loans and Discounts by Amount,Yearly,EI97Y01en 
+,Loans and Discounts by Amount,Monthly,EI97M01en
+,Loans and Discounts by Maturity,Yearly,EI98Y01en 
+,Loans and Discounts by Maturity,Monthly,EI98M01en 
+,Loans and Discounts at All Banks to Private & Government Enterprises in the Manufacturing Sector,Yearly,E95GY01en 
+,Loans and Discounts at All Banks to Private & Government Enterprises in the Manufacturing Sector,Monthly,E95GM01en 
+,Consumer Loans and Loans for Construction ,Yearly,EF99Y01en 
+,Consumer Loans and Loans for Construction ,Monthly,EF99M01en 
+,Foreign Currency Loans at All Banks ,Yearly,EG01Y01en 
+,Foreign Currency Loans at All Banks ,Monthly,EG01M01en 
+Interbank Call Loans ,Interbank Call Loans – Transactions by Institution,Yearly,EG11Y01en 
+,Interbank Call Loans – Transactions by Institution,Monthly,EG11M01en 
+,Interbank Call Loans – Transactions by Institution,Daily,EG11D01en 
+,Interbank Call Loans – Amounts Outstanding by Institutions,Yearly,EG13Y01en 
+,Interbank Call Loans – Amounts Outstanding by Institutions,Monthly,EG13M01en 
+,Interbank Call Loans – Amounts Outstanding by Institutions,Daily,EG13D01en 
+,Interbank Call Loans – Transactions by Maturities,Yearly,EG15Y01en 
+,Interbank Call Loans – Transactions by Maturities,Monthly,EG15M01en 
+,Interbank Call Loans – Transactions by Maturities,Daily,EG15D01en 
+,Interbank Call Loans – Amounts Outstanding by Maturities,Yearly,EG16Y01en 
+,Interbank Call Loans – Amounts Outstanding by Maturities,Monthly,EG16M01en 
+,Interbank Call Loans – Amounts Outstanding by Maturities,Daily,EG16D01en 
+Bills Market,Bills Transactions by Instrument,Yearly,EG17Y01en 
+,Bills Transactions by Instrument,Monthly,EG17M01en 
+,Bills Transactions by Customer,Yearly,EG19Y01en 
+,Bills Transactions by Customer,Monthly,EG19M01en 
+,"Issues, Redemptions and Amounts Outstanding of Bills ",Yearly,EG21Y01en 
+,"Issues, Redemptions and Amounts Outstanding of Bills ",Monthly,EG21M01en 
+Bonds Market,Bond Transactions,Yearly,EG23Y01en 
+,Bond Transactions,Monthly,EG23Y01en 
+,"Issues, Redemptions and Amounts Outstanding of Government Bonds ",Yearly,EGA4Y01en 
+,"Issues, Redemptions and Amounts Outstanding of Government Bonds ",Monthly,EGA4M01en 
+,"Issues, Redemptions & Amounts Outstanding of Domestic Corporate Bonds and Bank Debentures ",Yearly,EGB4Y01en 
+,"Issues, Redemptions & Amounts Outstanding of Domestic Corporate Bonds and Bank Debentures ",Monthly,EGB4M01en 
+Stock Market,Margin Trading,Yearly,EG25Y01en 
+,Margin Trading,Monthly,EG25M01en 
+,Transactions of Listed Stock and Stock Price Index ,Yearly,EG27Y01en 
+,Transactions of Listed Stock and Stock Price Index ,Monthly,EG27M01en 
+Interest Rates,Rates of Central Bank ,Yearly,EG2AY01en 
+,Rates of Central Bank ,Monthly,EG2AM01en 
+,Rates of Central Bank ,Daily,EG28D01en 
+,Rates by five major banks ,Yearly,EG2BY01en 
+,Rates by five major banks ,Monthly,EG2BM01en 
+,Deposit Rates and Base Lending Rates Offered by Major Banks ,Monthly,EG2WM01en 
+,Deposit Rates and Base Lending Rates Offered by First Commercial Bank,Daily,EG30D01en 
+,Rates on Foreign Currency Deposits Offered by Authorized Foreign Exchange Banks ,Monthly,EG3WM01en 
+,Weighted Average Interest Rates on Deposits and Loans ,Yearly,EG39Y01en 
+,Weighted Average Interest Rates on Deposits and Loans ,Quarterly,EG39Q01en 
+,New Loans and Interest Rates by Five Leading Banks ,Yearly,EH45Y01en 
+,New Loans and Interest Rates by Five Leading Banks ,Monthly,EH45M01en 
+,Interbank Call Loan Rates ,Yearly,EG37Y01en 
+,Interbank Call Loan Rates ,Monthly,EG37M01en 
+,Interbank Call Loan Rates ,Daily,EG37D01en 
+,Money Market Interest Rates ,Yearly,EG41Y01en 
+,Money Market Interest Rates ,Monthly,EG41M01en 
+,Capital Market Interest Rates ,Yearly,EG43Y01en 
+,Capital Market Interest Rates ,Monthly,EG43M01en 
+,Interest Rates in Unorganized Money Markets ,Monthly,EG45M01en 
+,Export and Import Foreign Exchange Proceeds and Payments ,Yearly,EG46Y01en 
+,Export and Import Foreign Exchange Proceeds and Payments ,Monthly,EG46M01en 
+,Day Trading and Foreign Exchange Net Positions ,Yearly,EG47Y01en 
+,Day Trading and Foreign Exchange Net Positions ,Monthly,EG47M01en 
+,Taipei Foreign Currency Call Loan Market ,Yearly,EG49Y01en 
+,Taipei Foreign Currency Call Loan Market ,Monthly,EG49M01en 
+,Taipei Foreign Currency Call Loan Market ,Daily,EG49D01en 
+,Spot Exchange Rates of the N.T. Dollar against the U.S. Dollar and Interest Rates on Accommodations for Usance Letter of Credit ,Monthly,EG51M01en 
+,Spot Exchange Rates of the N.T. Dollar against the U.S. Dollar and Interest Rates on Accommodations for Usance Letter of Credit ,Daily,EG51D01en 
+,Spot Exchange Rates ,Monthly,EG52M01en 
+,Forward Exchange Rates of the N.T. Dollar against the U.S. Dollar ,Yearly,EG55Y01en 
+,Forward Exchange Rates of the N.T. Dollar against the U.S. Dollar ,Monthly,EG55M01en 
+,Forward Exchange Rates of the N.T. Dollar against the U.S. Dollar ,Daily,EG55D01en 
+Other,Number of Financial Institutions,Yearly,EF09Y01en 
+,Number of Financial Institutions,Monthly,EF09M01en 
+,Open Market Transactions ,Yearly,EG60Y01en 
+,Open Market Transactions ,Monthly,EG60M01en 
+,Open Market Transactions ,Daily,EG60D01en 
+,Bank Clearings and Dishonored Checks and Bills ,Yearly,EF70Y01en 
+,Bank Clearings and Dishonored Checks and Bills ,Monthly,EF70M01en 
+,Payment Systems ,Yearly,EG77Y01en 
+,Payment Systems ,Monthly,EG77M01en 
+,Debits and Deposit Turnover Rate of Domestic Banks ,Yearly,EF69Y01en 
+,Debits and Deposit Turnover Rate of Domestic Banks ,Monthly,EF69M01en 
+,Credit Card and ATM Transactions ,Yearly,EG02Y01en 
+,Credit Card and ATM Transactions ,Monthly,EG02M01en 
+,Loans & Investments Revalued - Monetary Financial Institutions ,Yearly,EG75Y01en 
+,Loans & Investments Revalued - Monetary Financial Institutions ,Monthly,EG75M01en 
+,Annual Growth Rates of Loans & Investments of Financial Institutions ,Yearly,EG73Y01en 
+,Annual Growth Rates of Loans & Investments of Financial Institutions ,Monthly,EG73M01en 
+,Balance of Payments ,Yearly,BPP2Y01en 
+,Balance of Payments ,Quarterly,BPP2Q01en 
+,International Investment Position ,Yearly,BPF4Y01en 
+,Financial Transactions ,Yearly,FL01_en 
+,Financial Assets and Liabilities ,Yearly,FL02_en 

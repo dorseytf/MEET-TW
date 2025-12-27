@@ -6,10 +6,49 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+#############
+# Libraries #
+#############
+
+library(tidyverse)
+library(httr)
+library(jsonlite)
+
+
+###############
+# Definitions #
+###############
+
+### API Base URLs
+cbc_api_base <- "https://cpx.cbc.gov.tw/API/DataAPI/Get?FileName="
+
+
+
 ```
 
 
+```{r cbc_data_calls}
+### Which series to retrieve from the CBC via API
+cbc_pull_list <- c("EF11Y01en", #Reserve Money (Avg of Daily Figures) Annual
+                   "EF15Y01en"  #Monetary Aggregates (Avg of Daily Figures) Annual
+                   )
+
+n_cbc_series <- length(cbc_pull_list)
+
+# Create list to store the datasets
+cbc_data_series <- vector("list", length = n_cbc_series)
+
+# Pull via API and convert JSON to a dataframe
+for(c in 1:length(n_cbc_series)){
+  cbc_data_series[[c]] <- get_cbc_data(cbc_api_base, cbc_pull_list[c])
+}
+
+
+
+
+```
 
 
 
