@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(tidyverse)
 library(httr)
 library(jsonlite)
+library(here)
 
 
 ###############
@@ -24,15 +25,42 @@ library(jsonlite)
 ### API Base URLs
 cbc_api_base <- "https://cpx.cbc.gov.tw/API/DataAPI/Get?FileName="
 
-
+### CBC API Call Function
+source(here("Functions", "get_cbc_data.R"))
 
 ```
 
 
 ```{r cbc_data_calls}
 ### Which series to retrieve from the CBC via API
-cbc_pull_list <- c("EF11Y01en", #Reserve Money (Avg of Daily Figures) Annual
-                   "EF15Y01en"  #Monetary Aggregates (Avg of Daily Figures) Annual
+cbc_pull_list <- c("EF11Y01en", # Reserve Money (Avg of Daily Figures) Annual
+                   "EF15Y01en", # Monetary Aggregates (Avg of Daily Figures) Annual
+                   "EFA4Y01en", # Loans & Investments (measured at original cost) Annual
+                   "BP01Y01en", # NTD-USD Exchange Rates Annual
+                   "EF05Y01en", # Financial Markets
+                   "EG23Y01en", # Transactions, Issues, Redemptions and Amounts Outstanding of Government Bonds Annual
+                   "EGB4Y01en", # Transactions, Issues, Redemptions and Amounts Outstanding of Corporate Bonds and Bank Debentures Annual
+                   "EF39Y01en", # Consolidated Assets of Financial Institutions Annual
+                   "EF41Y01en", # Consolidated Liabilities of Financial Institutions Annual
+                   "EF35Y01en", # Consolidated Assets of Monetary Institutions Annual
+                   "EF37Y01en", # Consolidated Liabilities of Monetary Institutions Annual
+                   "EF23Y01en", # Consolidated Assets of Central Bank Annual
+                   "EF25Y01en", # Consolidated Liabilities of Central Bank Annual
+                   "EF27Y01en", # Consolidated Assets of Other Monetary Banks Annual
+                   "EF29Y01en", # Consolidated Liabilities of Other Monetary Banks Annual
+                   "EI79Y01en", # Deposits with All Banks by Sector Annual
+                   "EI86Y01en", # Loans and Discounts at All Banks by Sector Annual
+                   "EG27Y01en", # Transactions of Listed Stock and Stock Price Index Annual
+                   "EG2AY01en", # Central Bank Rates Annual
+                   "EG2BY01en", # Rates by five major banks Annual
+                   "EG39Y01en", # Weighted Average Interest Rates on Deposits and Loans Annual
+                   "EH45Y01en", # New Loans and Interest Rates by Five Leading Banks Annual
+                   "EG43Y01en", # Capital Market Interest Rates Annual
+                   "EG75Y01en", # Loans & Investments Revalued - Monetary Financial Institutions Annual
+                   "BPF4Y01en", # International Investment Position Annual
+                   "BPP2Y01en", # Balance of Payments Annual
+                   "FL01_en",   # Financial Transactions Annual
+                   "FL02_en"    # Financial Assets and Liabilities Annual
                    )
 
 n_cbc_series <- length(cbc_pull_list)
@@ -41,11 +69,9 @@ n_cbc_series <- length(cbc_pull_list)
 cbc_data_series <- vector("list", length = n_cbc_series)
 
 # Pull via API and convert JSON to a dataframe
-for(c in 1:length(n_cbc_series)){
+for(c in 1:n_cbc_series){
   cbc_data_series[[c]] <- get_cbc_data(cbc_api_base, cbc_pull_list[c])
 }
-
-
 
 
 ```
