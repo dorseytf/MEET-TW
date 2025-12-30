@@ -1,0 +1,33 @@
+domain,data_item_zh,data_item_en,data_series_id,data_dimension,data_period
+國民所得統計 ,國內生產毛額依支出分-年(1981以後),GDP by Expenditure - Annual,A018102050,1+2+3.1+2+3+6+9+12+13+14+15+16+17+18+19+20+21..A.,StartTime=1981&endTime=2024
+國民所得統計 ,國內生產毛額貢獻度─依支出分-年,GDP Contribution by Expenditure - Annual,A018102070,1+2+3+4+5+6+7+8+9+10+11+12...A.,StartTime=1981&endTime=2024
+國民所得統計 ,國內生產毛額貢獻度─依行業分-年,GDP Contribution by Industry - Annual,A018102080,1.1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20+21+22+23+24+25+26+27+28..A.,StartTime=1981&endTime=2024
+國民所得統計 ,國內各業生產及平減指數-年,Domestic Production and Deflators by Industry - Annual,A018103010,1+2+3+4+5.1+6+7+33+36+39+40+43+49+52+56+60+63+64+67+68+69+72+73+77+78+79+80+82..A.,StartTime=1981&endTime=2024
+國民所得統計 ,國民所得、儲蓄與投資-年,"National income, savings and investment - Annual",A018201010,1+2+3.1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19..A.,StartTime=1981&endTime=2024
+國民所得統計 ,民間消費-年,Private Consumption - Annual,A018203010,1+2+3.1+2+16..A.,StartTime=1981&endTime=2024
+國民所得統計 ,固定資本形成毛額-年,Fixed Capital Formation - Annual,A018401010,1+2+3.1+2+7+8+11.1+2+3+4+5.A.,StartTime=1981&endTime=2024
+國民所得統計 ,各業固定資本形成毛額-年,Fixed Capital Formation by Industry,A018402010,1+2+3.1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20+21.1+2+3+4+5.A.,StartTime=1981&endTime=2024
+國民所得統計 ,存貨變動-年,Inventory Changes,A018403010,1+2.1+2+3..A.,StartTime=1981&endTime=2024
+國民所得統計 ,國內生產及要素所得-年,Domestic Production and factor income - Annual,A018102020,1+2+3.1+6+7+33+36+39+40+43+49+52+56+60+63+64+67+68+69+72+73+77+78+79+80+84..A.,StartTime=1981&endTime=2024
+家庭收支統計 ,所得總額按來源別分 -年,Total Income by Source - Annual,A020002010,1+2.1+2+3+4+5..A.,StartTime=1981&endTime=2024
+家庭收支統計 ,政府對家庭移轉收支對所得分配之影響 -年,Impact of Government Transfers on Income Distribution - Annual,A020005010,1+2+3+4+5+6...A.,StartTime=1981&endTime=2024
+家庭收支統計 ,家庭消費支出按消費型態分 -年,Household Consumption by consumption type – Annual,A020007010,1+2+3+4+5+6+7+8+9+10+11...A.,StartTime=1981&endTime=2024
+國民所得統計 ,政府消費-年,Government Consumption,A018706010,1+2+3+4+5+6+7+8+9+10+11...A.,StartTime=1981&endTime=2024
+物價統計 ,消費者物價基本分類指數-年,CPI - Annual,A030101015,1+2+29+36+52+62+66+75...A.,StartTime=1981&endTime=2024
+物價統計 ,生產者物價基本分類指數-年,PPI - Annual,A030701015,1+2+3+9+12+13+16+17+18+19+20+29+32+33+37+40+41+42+43+44+48+51+56+61+67+73+79+84+88+93+94+98+99+100+101...A.,StartTime=2021&endTime=2024
+物價統計 ,服務業生產者物價基本分類指數-月,Service Sector PPI - Annual,A030901015,1+2+3+4+5+6+7...A.,StartTime=2023&endTime=2024
+物價統計 ,進口物價基本分類指數(按HS分)(美元計價)-年,Import Price Index in USD - Annual,A030301015,1+2+6+12+17+22+32+35+36+38+41+46+50+57+61+63+65...A.,StartTime=1981&endTime=2024
+物價統計 ,出口物價基本分類指數(按HS分)(美元計價)-年,Export Price Index in USD - Annual,A030401015,1+2+4+5+8+10+18+21+23+26+33+35+43+47+49+51...A.,StartTime=1981&endTime=2024
+勞工統計 ,各行業就業人口(第六次修訂 1978-2001年)-年,Unemployment by Industry (1978-2001) - Annual,A040103010,1+2+3+4+5+6+7+8+9+10+11+12.1..A.,StartTime=1981&endTime=2001
+勞工統計 ,各行業就業人口(第八次修訂 2001年以後)-年,Unemployment by Industry (2001 on) - Annual,A040103030,1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20.1..A.,StartTime=2001&endTime=2011
+勞工統計 ,各行業就業人口(第九次修訂 2012年以後)-年,Unemployment by Industry (2012 on) - Annual,A040103040,1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20.1..A.,StartTime=2012&endTime=2016
+勞工統計 ,各行業就業人口(第十次修訂 2017年以後)-年,Unemployment by Industry (2017 on) - Annual,A040103050,1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20.1..A.,StartTime=2017&endTime=2024
+勞工統計 ,每人每月總薪資-年,Monthly Income per Capita - Annual,A046201010,1+2+34.1..A.,StartTime=1981&endTime=2024
+勞工統計 ,重要勞動力指數-年,Key Labor Force Indices - Annual,A040107010,1+2+3+4+5+6+7+8+9+10+11+12.1..A.,StartTime=1981&endTime=2024
+社會保障支出統計 ,社會保障支出-年,Social Security Expenditure - Annual,A200101010,1+2+3+4+5+6+7...A.,StartTime=2000&endTime=2024
+工商業統計 ,工業生產指數-年,Industrial Production Index - Annual,A050104010,1+2+3+4+5+6+7+8+9+10...A.,StartTime=1981&endTime=2024
+進出口統計 ,進出口貿易總值(一般貿易制度)-年,Total Value of Imports and Exports - Annual,A081201010,1+2.1+2..A.,StartTime=1981&endTime=2024
+金融統計 ,我國與主要貿易對手通貨對美元之匯率-年,Exchange Rates with Major Trading Partners - Annual,A093601010,1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18...A.,StartTime=1981&endTime=2024
+財政統計 ,全國賦稅實徵淨額－按稅目別分-年,Net National Tax Revenue - Annual,A100101010,1+2+3+4+5+6+7+8+9+10+11+12+13+14+15+16+17+18+19+20+21+22+23+24+25+26+27+31+35+36...A.,StartTime=1981&endTime=2024
+財政統計 ,各級政府歲入歲出淨額、餘絀及融資-年,"Net Revenue and Expenditures, Surplus and Deficit, All Govt Levels - Annual",A100201010,1+2+3+4+5+6+7+8+9+10+11+12+13+14+15...A.,StartTime=1981&endTime=2024
+財政統計 ,各級政府債務累積未償餘額-年,Outstanding Government Debt - Annual,A100210010,1+2+3+4+5+6+7+8+9+10+11...A.,StartTime=1981&endTime=2024
