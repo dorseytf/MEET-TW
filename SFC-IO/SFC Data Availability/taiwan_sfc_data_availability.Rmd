@@ -17,6 +17,7 @@ library(httr)
 library(jsonlite)
 library(xml2)
 library(here)
+library(janitor)
 
 
 ###############
@@ -26,7 +27,7 @@ library(here)
 ### API Base URLs
 cbc_api_base <- "https://cpx.cbc.gov.tw/API/DataAPI/Get?FileName="
 
-dgbas_api_base <- "https://nstatdb.dgbas.gov.tw/dgbasall/webMain.aspx?sdmx/"
+dgbas_api_base <- "https://nstatdb.dgbas.gov.tw/dgbasall/webMain.aspx?sdmx"
 
 #############
 # Functions #
@@ -37,6 +38,7 @@ source(here("Functions", "get_cbc_data.R"))
 
 ### DGBAS API Call Function
 source(here("Functions", "get_dgbas_xml_data.R"))
+source(here("Functions", "get_dgbas_api_data.R"))
 
 ```
 
@@ -145,21 +147,17 @@ dgbas_api_data_piece <- sprintf("%s/%s&%s", data_series_id, data_dimension, data
 ```{r dgbas_api_calls}
 
 dgbas_api_list <- read_csv(here("SFC-IO", "SFC Data Availability", "DGBAS API Database Codes.csv"),
-                           locale = locale(encoding = "Big5"))
+                           locale = locale(encoding = "Big5")) %>%
+  mutate(api_call = sprintf("%s/%s/%s&%s", dgbas_api_base, data_series_id, data_dimension, data_period))
 
 n_dgbas_series <- nrow(dgbas_api_list)
 dgbas_macro_data <- vector("list", length = n_dgbas_series)
 
 for(d in 1:n_dgbas_series){
-  new_api_details <- sprintf("%s/%s/%s&%s", 
-                             dgbas_api_base, 
-                             dgbas_api_list$data_series_id[d], 
-                             dgbas_api_list$data_dimension[d], 
-                             dgbas_api_list$data_period[d])
-  
-  dgbas_macro_data[[d]] <- get_dgbas_api_data(new_api_details)
+  print(d)
+  dgbas_macro_data[[d]] <- get_dgbas_api_data(dgbas_api_list$api_call[d])
 }
-
+names(dgbas_macro_data) <- dgbas_api_list$data_item_en
 
 ```
 
