@@ -37,7 +37,6 @@ dgbas_api_base <- "https://nstatdb.dgbas.gov.tw/dgbasall/webMain.aspx?sdmx"
 source(here("Functions", "get_cbc_data.R"))
 
 ### DGBAS API Call Function
-source(here("Functions", "get_dgbas_xml_data.R"))
 source(here("Functions", "get_dgbas_api_data.R"))
 
 ```
@@ -75,6 +74,13 @@ cbc_pull_list <- c("EF11Y01en", # Reserve Money (Avg of Daily Figures) Annual
                    "FL02_en"    # Financial Assets and Liabilities Annual
                    )
 
+cbc_database_codes <- read_csv("CBC Database Codes.csv", locale = ) %>%
+  clean_names() %>%
+  fill(category, .direction = "down") %>%
+  filter(item_code %in% cbc_pull_list) %>%
+  mutate(data_element = iconv(data_element, from = "UTF-8", to = "ASCII", sub = "-"),
+         api_call = sprintf("%s/%s", cbc_api_base, item_code))
+
 n_cbc_series <- length(cbc_pull_list)
 
 # Create list to store the datasets
@@ -82,65 +88,13 @@ cbc_data_series <- vector("list", length = n_cbc_series)
 
 # Pull via API and convert JSON to a dataframe
 for(c in 1:n_cbc_series){
-  cbc_data_series[[c]] <- get_cbc_data(cbc_api_base, cbc_pull_list[c])
+  print(c)
+  
+  cbc_data_series[[c]] <- get_cbc_data(cbc_database_codes$api_call[c])
 }
+names(cbc_data_series) <- cbc_database_codes$data_element
 
-
-```
-
-
-```{r dgbas_data_calls}
-
-dgbas_pull_list <- tribble(
-  ~data_item_zh,                               ~data_item_en,
-  "國內生產毛額依支出分-年(1981以後)",         "GDP by Expenditure - Annual",
-  "國內生產毛額貢獻度─依支出分-年",            "GDP Contribution by Expenditure - Annual",
-  "國內生產毛額貢獻度─依行業分-年",            "GDP Contribution by Industry - Annual",
-  "國內各業生產及平減指數-年",                 "Domestic Production and Deflators by Industry - Annual",
-  "國民所得、儲蓄與投資-年",                   "National income, savings and investment - Annual",
-  "民間消費-年",                               "Private Consumption - Annual",
-  "固定資本形成毛額-年",                       "Fixed Capital Formation - Annual",
-  "各業固定資本形成毛額-年",                   "Fixed Capital Formation by Industry",
-  "存貨變動-年",                               "Inventory Changes",
-  "國內生產及要素所得-年",                     "Domestic Production and factor income - Annual",
-  "所得總額按來源別分 -年",                    "Total Income by Source - Annual",
-  "政府對家庭移轉收支對所得分配之影響 -年",    "Impact of Government Transfers on Income Distribution - Annual",
-  "家庭消費支出按消費型態分 -年",              "Household Consumption by consumption type - Annual",
-  "政府消費-年",                               "Government Consumption",
-  "消費者物價基本分類指數-年",                 "",
-  "生產者物價基本分類指數-年",                 "PPI - Annual",
-  "服務業生產者物價基本分類指數-月",           "Service Sector PPI - Annual",
-  "進口物價基本分類指數(按HS分)(美元計價)-年", "Import Price Index in USD - Annual",
-  "出口物價基本分類指數(按HS分)(美元計價)-年", "Export Price Index in USD - Annual",
-  "各行業就業人口(第六次修訂 1978-2001年)-年", "Unemployment by Industry (1978-2001) - Annual",
-  "各行業就業人口(第八次修訂 2001年以後)-年",  "Unemployment by Industry (2001 on) - Annual",
-  "各行業就業人口(第九次修訂 2012年以後)-年",  "Unemployment by Industry (2012 on) - Annual",
-  "各行業就業人口(第十次修訂 2017年以後)-年",  "Unemployment by Industry (2017 on) - Annual",
-  "每人每月總薪資-年",                         "Monthly Income per Capita - Annual",
-  "重要勞動力指數-年",                         "Key Labor Force Indices - Annual",
-  "社會保障支出-年",                           "Social Security Expenditure - Annual",
-  "工業生產指數-年",                           "Industrial Production Index - Annual",
-  "進出口貿易總值(一般貿易制度)-年",           "Total Value of Imports and Exports - Annual",
-  "我國與主要貿易對手通貨對美元之匯率-年",     "Exchange Rates with Major Trading Partners - Annual",
-  "全國賦稅實徵淨額－按稅目別分-年",           "Net National Tax Revenue - Annual",
-  "各級政府歲入歲出淨額、餘絀及融資-年",       "Net Revenue and Expenditures, Surplus and Deficit, All Govt Levels - Annual",
-  "各級政府債務累積未償餘額-年",               "Outstanding Government Debt - Annual"
-)
-
-
-dgbas_macrodb_structure <- read_csv(here("SFC-IO", "SFC Data Availability", "DGBAS MacroDatabase Structure.csv"), skip = 2,
-                                      locale = locale(encoding = "Big5"), col_names = c("domain", "data_item_zh", "link", "source")) %>%
-  inner_join(dgbas_pull_list, by = "data_item_zh")
-
-
-dgbas_macro_data <- dgbas_macrodb_structure %>%
-  group_by(data_item_en) %>%
-  mutate(output_data = list(get_dgbas_xml_data(link)))
-
-test <- fromJSON(rawToChar(GET("https://nstatdb.dgbas.gov.tw/dgbasall/webMain.aspx?sdmx/A018102070/1+2+3+4+5+6+7+8+9+10+11+12...A.&startTime=1981&endTime=2025")$content))
-
-dgbas_api_data_piece <- sprintf("%s/%s&%s", data_series_id, data_dimension, data_period)
-
+cbc_data_series <- bind_rows(cbc_data_series, .id = "data_element")
 ```
 
 
@@ -154,10 +108,11 @@ n_dgbas_series <- nrow(dgbas_api_list)
 dgbas_macro_data <- vector("list", length = n_dgbas_series)
 
 for(d in 1:n_dgbas_series){
-  print(d)
   dgbas_macro_data[[d]] <- get_dgbas_api_data(dgbas_api_list$api_call[d])
 }
 names(dgbas_macro_data) <- dgbas_api_list$data_item_en
+
+dgbas_macro_data <- bind_rows(dgbas_macro_data, .id = "data_item")
 
 ```
 

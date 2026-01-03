@@ -5,8 +5,10 @@
 ##
 
 
-get_cbc_data <- function(cbc_api_base, cbc_data_series_id) {
-  cbc_res <- fromJSON(rawToChar(GET(sprintf("%s/%s", cbc_api_base, cbc_data_series_id))$content))
+get_cbc_data <- function(cbc_api_call) {
+  cbc_potential_cols <- c("period", "data_item", "value_type", "units", "sector")
+  
+  cbc_res <- fromJSON(rawToChar(GET(cbc_api_call)$content))
   
   nmetrics <- length(cbc_res$data$structure$Table2$data)
   n_structures <- length(cbc_res$data$structure)
@@ -50,9 +52,18 @@ get_cbc_data <- function(cbc_api_base, cbc_data_series_id) {
     left_join(cbc_res_colnames, by = c("varnum")) %>%
     select(-varnum) %>%
     pivot_wider(names_from = varname, values_from = value) %>%
-    rename(period = V1) %>%
-    mutate(data_series_title = cbc_res$meta$title) %>%
-    relocate(data_series_title, .after = "period")
+    rename(period = V1, value_type = metric) %>%
+    mutate(data_item = cbc_res$meta$title) %>%
+    relocate(data_item, .after = "period") %>%
+    pivot_longer(cols = -one_of(cbc_potential_cols), names_to = "metric", values_to = "value")
+  
+  #collapse sector and metric, if sector is present
+  has_sector <- "sector" %in% colnames(cbc_res_data)
+  if(has_sector){
+    cbc_res_data <- cbc_res_data %>%
+      mutate(metric = sprintf("%s - %s", metric, sector)) %>%
+      select(-sector)
+  }
   
   return(cbc_res_data)
 }
